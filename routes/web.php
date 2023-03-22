@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PlaceController;
 use App\Http\Controllers\Admin\IndexController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ReservationController;
 use App\Http\Controllers\Admin\SubCategoryController;
@@ -50,6 +52,17 @@ Route::prefix('Banner/')->name('Banner.')->controller(BannerController::class)->
     Route::get('delete/{id}', 'delete')->name('delete');
     Route::get('success', 'success')->name('success');
     Route::get('secondary', 'secondary')->name('secondary');
+});
+
+Route::prefix('Place/')->name('Place.')->controller(PlaceController::class)->group(function() {
+    Route::get('index','index')->name('index');
+    Route::post('store','store')->name('store');
+    Route::put('update/{id}','update')->name('update');
+    Route::get('delete/{id}','delete')->name('delete');
+});
+
+Route::prefix('Orders/')->name('Orders.')->controller(OrderController::class)->group(function(){
+    Route::get('index','index')->name('index');
 });
 
 Route::prefix('Reservation/')->name('Reservation.')->controller(ReservationController::class)->group(function () {

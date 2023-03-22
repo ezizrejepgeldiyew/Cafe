@@ -25,11 +25,11 @@ class ProductController extends Controller
             $file = $request->file('photo');
             $extenstion = $file->getClientOriginalName();
             $filename = 'image/product/' . $extenstion;
-            Image::make($file)->resize(120, 120)->save(public_path($filename), 80);
+            Image::make($file)->resize(450, 300)->save(public_path($filename), 80);
             $data['photo'] = $filename;
 
             $filename = 'image/product/resize' . $extenstion;
-            Image::make($file)->resize(300, 300)->save(public_path($filename), 80);
+            Image::make($file)->resize(450, 300)->save(public_path($filename), 80);
             $data['photo1'] = $filename;
         }
         $product = Product::create($data);
@@ -45,17 +45,17 @@ class ProductController extends Controller
         $data['photo'] = $product->photo;
         $data['photo1'] = $product->photo1;
         if ($request->hasFile('photo')) {
+            File::delete($product->photo);
             $file = $request->file('photo');
             $extenstion = $file->getClientOriginalName();
             $filename = 'image/product/' . $extenstion;
-            Image::make($file)->resize(120, 120)->save(public_path($filename), 80);
+            Image::make($file)->resize(450, 300)->save(public_path($filename), 80);
             $data['photo'] = $filename;
-            File::delete($product->photo);
+            File::delete($product->photo1);
 
             $filename = 'image/product/resize' . $extenstion;
-            Image::make($file)->resize(300, 300)->save(public_path($filename), 80);
+            Image::make($file)->resize(450, 300)->save(public_path($filename), 80);
             $data['photo1'] = $filename;
-            File::delete($product->photo1);
         }
         $product->update($data);
         return redirect()->route('Product.index')->with('success',"Maglumat üstünlikli üýtgedildi");

@@ -300,6 +300,7 @@
                             <li><a href="{{ route('Category.index') }}">Kategoriýa</a></li>
                             <li><a href="{{ route('SubCategory.index') }}">Kiçi kategoriýa</a></li>
                             <li><a href="{{ route('Product.index') }}">Haryt</a></li>
+                            <li><a href="{{ route('Place.index') }}">Ýer goşmak</a></li>
                         </ul>
                     </li>
 
@@ -319,6 +320,17 @@
                         </a>
                         <ul class="submenu">
                             <li><a href="{{ route('Banner.index') }}">Banner</a></li>
+                            <li><a href="{{ route('Banner.success') }}">Tassyklanan</a></li>
+                            <li><a href="{{ route('Banner.secondary') }}">Tassyklanmadyk</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon dw dw-edit"></span><span class="mtext">Sargytlar</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="{{ route('Orders.index') }}">Sargytlar</a></li>
                             <li><a href="{{ route('Banner.success') }}">Tassyklanan</a></li>
                             <li><a href="{{ route('Banner.secondary') }}">Tassyklanmadyk</a></li>
                         </ul>

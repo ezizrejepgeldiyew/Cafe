@@ -23,7 +23,7 @@ class CategoryController extends Controller
             $file = $request->file('photo');
             $extenstion = $file->getClientOriginalName();
             $filename = 'image/category/' . $extenstion;
-            Image::make($file)->resize(120, 120)->save(public_path($filename), 80);
+            Image::make($file)->resize(300, 300)->save(public_path($filename), 80);
             $data['photo'] = $filename;
         }
         $category = Category::create($data);
@@ -36,13 +36,14 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $data['photo'] = $category->photo;
         if ($request->hasFile('photo')) {
+            File::delete($category->photo);
             $file = $request->file('photo');
             $extenstion = $file->getClientOriginalName();
             $filename = 'image/category/' . $extenstion;
-            Image::make($file)->resize(120, 120)->save(public_path($filename), 80);
+            Image::make($file)->resize(300, 300)->save(public_path($filename), 80);
             $data['photo'] = $filename;
-            File::delete($category->photo);
         }
+        // dd($category);
         $category->update($data);
         return redirect()->route('Category.index')->with('success',"Maglumat üstünlikli üýtgedildi");
     }

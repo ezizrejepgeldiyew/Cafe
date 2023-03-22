@@ -16,4 +16,9 @@ class Product extends Model
         return $this->belongsTo(SubCategory::class,'sub_category','id');
     }
 
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
 }
